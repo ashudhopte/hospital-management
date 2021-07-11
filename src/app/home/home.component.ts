@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
 
   public patients: MPatientDtoC[] = []
   public patientToDelete: MPatientDtoC = new MPatientDtoC()
-  public deletePatientId: number = 0
+  public deletePatientId: number
   public loading: boolean = false
   public response: ResponseDtoC = new ResponseDtoC()
   modalRef: BsModalRef

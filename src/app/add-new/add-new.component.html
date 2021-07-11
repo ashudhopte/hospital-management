@@ -1,1 +1,65 @@
-<p>add-new works!</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="title">
+            <div class="row">
+                <div class="col-lg-10">
+                    <h3>
+                        Add New Patient
+                    </h3>
+                </div>
+                <div class="col-lg-2">
+                    <p *ngIf="loading">Loading...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <form>
+            <div class="row">
+                <label>First Name</label> <br/>
+                <input class="input-box" type="text" placeholder="Enter First Name" ng-model="newPatient.firstName"/>
+            </div>
+            <div class="row">
+                <label>Last Name</label> <br/>
+                <input class="input-box" type="text" placeholder="Enter Last Name" ng-model="newPatient.lastName"/>
+            </div>
+            <div class="row">
+                <label>Age</label> <br/>
+                <input class="input-box" type="number" placeholder="Enter Age" ng-model="newPatient.age"/>
+            </div>
+            <div class="row">
+                <label>Contact Number</label> <br/>
+                <input class="input-box" type="number" placeholder="Enter Contact Number" ng-model="newPatient.contactNumber"/>
+            </div>
+            <div class="row">
+                <label>
+                    Identity Type 
+                </label>
+                <select ng-model="newPatient.identityType">
+                    <option value="Aadhar Card">Aadhar Card</option>
+                    <option value="Pan Card">Pan Card</option>
+                    <option value="Ration Card">Ration Card</option>
+                </select>
+            </div>
+            <div class="row">
+                <label>Identity Number</label> <br/>
+                <input class="input-box" type="text" placeholder="Enter Identity Number" ng-model="newPatient.identityNumber"/>
+            </div>
+            <div class="row">
+                <label>Is Covid Positive?</label> <br/>
+                <label>
+                    <input type="radio" name="choice-radio" value=true ng-model="newPatient.isCovidPositive">
+                    Yes
+                </label>
+                <label>
+                    <input type="radio" name="choice-radio" value=false ng-model="newPatient.isCovidPositive">
+                    No
+                </label>
+                
+            </div>
+            <button type="submit" class="btn" (click) = "submit()">
+                Submit
+            </button>
+        </form>
+    </div>
+</div>

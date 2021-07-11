@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { MPatientDtoC } from '../models';
 
 @Component({
   selector: 'app-edit-modal',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-modal.component.css']
 })
 export class EditModalComponent implements OnInit {
+
+  @Input() patient: MPatientDtoC = new MPatientDtoC()
 
   constructor() { }
 

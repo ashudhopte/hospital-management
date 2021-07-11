@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { BsModalRef } from 'ngx-bootstrap/modal';
+import { MPatientDtoC } from '../models';
 
 @Component({
   selector: 'app-info-modal',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InfoModalComponent implements OnInit {
 
-  constructor() { }
+  @Input() patient: MPatientDtoC = new MPatientDtoC()
+
+  constructor(
+    public bsModalRef: BsModalRef
+  ) { }
 
   ngOnInit(): void {
   }
 
+  close(){
+    this.bsModalRef.hide()
+  }
 }
