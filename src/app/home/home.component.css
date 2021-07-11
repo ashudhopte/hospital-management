@@ -1,0 +1,40 @@
+.row .title{
+    background-color: darkslateblue;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: left;
+    color: white;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    height: min-content;
+}
+
+.table-header{
+    background-color: darkslateblue;
+    color: white;
+    text-align: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.table-content{
+    max-height: 500px;
+    overflow-y: auto;
+    width: fit-content;
+    text-align: center;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+i{
+    color: white;
+    cursor: pointer;
+}
+
+.btn{
+    background-color: darkslateblue;
+    min-width: 50px;
+}

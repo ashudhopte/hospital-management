@@ -1,0 +1,19 @@
+
+.row .header{
+    color: white; 
+    font-size: x-large; 
+    font-weight: bold;
+    height: max-content; 
+    top: 0; 
+    padding: 20px; 
+    background-color: darkslateblue;
+}
+
+.col-lg-2{
+    margin: 0;
+    left: 0;
+}
+
+.col-lg-10{
+    margin: 0;
+}

@@ -1,0 +1,24 @@
+.sidenav {
+    height: 100%;
+    width: fit-content;
+    position: fixed;
+    left: 0;
+    overflow-x: hidden;
+    padding: 20px;
+    padding-right: 50px;
+    background-color: darkslateblue;
+    list-style-type: none;
+  }
+
+.sidenav-item{
+    text-align: start;
+    color: white;
+    font-size: large;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.sidenav-item::selection{
+  background-color: floralwhite;
+  color: black;
+}
