@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  // backend api url
   API_URL: "http://localhost:5050/hospital-management/"
 };
 

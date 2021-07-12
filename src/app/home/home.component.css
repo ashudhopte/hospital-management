@@ -18,6 +18,10 @@
     border-top-right-radius: 10px;
 }
 
+th, td{
+    padding: 10px;
+}
+
 .table-content{
     max-height: 500px;
     overflow-y: auto;
@@ -27,6 +31,10 @@
 
 table, th, td {
     border: 1px solid black;
+}
+
+table{
+    overflow-x: auto;
 }
 
 i{

@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-lg-10">
                     <h3>
-                        Add New Patient
+                        Patient Details
                     </h3>
                 </div>
                 <div class="col-lg-2">
@@ -16,50 +16,55 @@
     <div>
         <form>
             <div class="row">
-                <label>First Name</label> <br/>
-                <input class="input-box" type="text" placeholder="Enter First Name" ng-model="newPatient.firstName"/>
+                <label>First Name <i class="required">*</i></label> <br/>
+                <input class="form-control" (keyup)="onChange()" type="text" placeholder="Enter First Name" name="firstName" [(ngModel)]="newPatient.firstName" required/>
             </div>
             <div class="row">
-                <label>Last Name</label> <br/>
-                <input class="input-box" type="text" placeholder="Enter Last Name" ng-model="newPatient.lastName"/>
+                <label>Last Name <i class="required">*</i></label> <br/>
+                <input class="form-control" (keyup)="onChange()" type="text" placeholder="Enter Last Name" name="lastName" [(ngModel)]="newPatient.lastName" required/>
             </div>
             <div class="row">
                 <label>Age</label> <br/>
-                <input class="input-box" type="number" placeholder="Enter Age" ng-model="newPatient.age"/>
+                <input class="form-control" (keyup)="onChange()" type="number" placeholder="Enter Age" name="age" [(ngModel)]="newPatient.age"/>
             </div>
             <div class="row">
-                <label>Contact Number</label> <br/>
-                <input class="input-box" type="number" placeholder="Enter Contact Number" ng-model="newPatient.contactNumber"/>
+                <label>Contact Number <i class="required">*</i></label> <br/>
+                <input class="form-control" (keyup)="onChange()" type="tel" placeholder="Enter Contact Number" name="contactNumber" [(ngModel)]="newPatient.contactNumber" required/>
             </div>
             <div class="row">
                 <label>
-                    Identity Type 
+                    Identity Type <i class="required">*</i>
                 </label>
-                <select ng-model="newPatient.identityType">
-                    <option value="Aadhar Card">Aadhar Card</option>
-                    <option value="Pan Card">Pan Card</option>
-                    <option value="Ration Card">Ration Card</option>
+                <select [(ngModel)]="newPatient.identityType" onChange="onChange()" name="identityType" class="form-control" required>
+                    <option [disabled] = "true" selected>Select Identity Type</option>
+                    <option *ngFor="let identity of identityTypeList; let i = index" value={{identity}}>
+                        {{identity}}
+                    </option>
                 </select>
             </div>
             <div class="row">
-                <label>Identity Number</label> <br/>
-                <input class="input-box" type="text" placeholder="Enter Identity Number" ng-model="newPatient.identityNumber"/>
+                <label>Identity Number <i class="required">*</i></label> <br/>
+                <input class="form-control" type="text" (keyup)="onChange()" placeholder="Enter Identity Number" name="identityNumber" [(ngModel)]="newPatient.identityNumber" required/>
             </div>
             <div class="row">
-                <label>Is Covid Positive?</label> <br/>
+                <label>Is Covid Positive? <i class="required">*</i></label> <br/>
                 <label>
-                    <input type="radio" name="choice-radio" value=true ng-model="newPatient.isCovidPositive">
+                    <input type="radio" name="choice-radio" [value]="true" [(ngModel)]="newPatient.isCovidPositive">
                     Yes
                 </label>
                 <label>
-                    <input type="radio" name="choice-radio" value=false ng-model="newPatient.isCovidPositive">
+                    <input type="radio" name="choice-radio" [value]="false" [(ngModel)]="newPatient.isCovidPositive">
                     No
                 </label>
                 
             </div>
-            <button type="submit" class="btn" (click) = "submit()">
+            <button *ngIf="new" type="submit" class="btn" (click) = "submit()" [disabled]="submitDisable">
                 Submit
             </button>
+            <button *ngIf="!new" type="submit" class="btn" (click) = "submit()" [disabled]="submitDisable">
+                Update
+            </button>
+            <p *ngIf="submitDisable">Fill all the required fields.<i class="required">*</i></p>
         </form>
     </div>
 </div>

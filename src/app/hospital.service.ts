@@ -7,6 +7,8 @@ import { MPatientDtoC } from './models';
 @Injectable({
   providedIn: 'root'
 })
+
+// Service class for endpoints
 export class HospitalService {
 
   public url: string = ''
@@ -20,10 +22,18 @@ export class HospitalService {
     }
 
     deletePatientDetails(patientId: number){
-      return this.http.delete<any>(this.url + 'delete-patient-details?patientId' + patientId)
+      return this.http.delete<any>(this.url + 'delete-patient-details?patientId=' + patientId)
     }
 
     addNewPatient(mPatientDto: MPatientDtoC): Observable<any>{
       return this.http.post<any>(this.url + 'add-new-patient', mPatientDto)
+    }
+
+    updatePatient(mPatientDto: MPatientDtoC): Observable<any>{
+      return this.http.put<any>(this.url + 'update-patient-details', mPatientDto)
+    }
+
+    getPatientDetails(patientId: number){
+      return this.http.get<any>(this.url + 'patient-by-id?patientId=' + patientId)
     }
 }

@@ -8,7 +8,7 @@
     </li>
     <br/>
     <li [routerLinkActive] = "['active']">
-        <a class="sidenav-item" [routerLink] = "['add-new']">
+        <a class="sidenav-item" [routerLink] = "['add-new']" [queryParams]="{patientId: '0'}">
             <i class="fa fa-plus"></i> Add New Patient
         </a>
     </li>

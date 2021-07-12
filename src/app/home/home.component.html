@@ -16,26 +16,30 @@
     <div class="row">
         <table>
             <tr class="table-header">
-                <th style="width: min-content;">Show Info.</th>
-                <th style="width: min-content;">Edit</th>
                 <th>Sr.No.</th>
+                <th style="width: min-content;">Edit</th>
+                <th>Admitted On</th>
                 <th>Name</th>
+                <th>Age</th>
+                <th>Identity Type</th>
+                <th>Identity Number</th>
+                <th>Contact Number</th>
                 <th>Covid Positive</th>
                 <th style="width: min-content;">Delete</th>
             </tr>
             <tr class="table-content" *ngFor="let p of patients; let i = index">
-                <td style="width: min-content;">
-                    <button class="btn" (click) = "openInfoModal(i)">
-                        <i class="fa fa-info-circle"></i>
-                    </button>
-                </td>
-                <td style="width: min-content;">
-                    <button class="btn" (click) = "openEditModal(i)">
+                <td>{{i+1}}</td>
+                <td style="width: min-content;" (click)="editDetails(i)">
+                    <button class="btn">
                         <i class="fa fa-edit"></i>
                     </button>
                 </td>
-                <td>{{i+1}}</td>
+                <td>{{p.admittedOn | date: 'dd-MM-yyyy, hh:mm a'}}</td>
                 <td>{{p.firstName + ' ' + p.lastName}}</td>
+                <td>{{p.age}}</td>
+                <td>{{p.identityType}}</td>
+                <td>{{p.identityNumber}}</td>
+                <td>{{p.contactNumber}}</td>
                 <td>{{p.isCovidPositive}}</td>
                 <td style="width: min-content;">
                     <button class="btn" (click) = "delete(i)">

@@ -7,9 +7,8 @@ import { HomeComponent } from './home/home.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { AddNewComponent } from './add-new/add-new.component';
 import { HttpClientModule } from '@angular/common/http';
-import { EditModalComponent } from './edit-modal/edit-modal.component';
-import { InfoModalComponent } from './info-modal/info-modal.component';
 import { BsModalService } from 'ngx-bootstrap/modal';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,13 +16,12 @@ import { BsModalService } from 'ngx-bootstrap/modal';
     HomeComponent,
     SidebarComponent,
     AddNewComponent,
-    EditModalComponent,
-    InfoModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [BsModalService],
   bootstrap: [AppComponent]

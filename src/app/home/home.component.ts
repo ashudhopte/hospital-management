@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { NavigationExtras, Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { EditModalComponent } from '../edit-modal/edit-modal.component';
 import { HospitalService } from '../hospital.service';
-import { InfoModalComponent } from '../info-modal/info-modal.component';
 import { MPatientDtoC, ResponseDtoC } from '../models';
 
 @Component({
@@ -18,11 +16,10 @@ export class HomeComponent implements OnInit {
   public deletePatientId: number
   public loading: boolean = false
   public response: ResponseDtoC = new ResponseDtoC()
-  modalRef: BsModalRef
 
   constructor(
     private hospitalService: HospitalService,
-    private modalService: BsModalService
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -30,36 +27,19 @@ export class HomeComponent implements OnInit {
     this.allPatients()
   }
 
-  openInfoModal(i: number){
-    const initialState = {
-      patient: this.patients[i]
-    }
-    this.modalRef = this.modalService.show(InfoModalComponent, {
-      initialState,
-      backdrop: true,
-      ignoreBackdropClick: true,
-      class: 'modal-xl',
-    })
-    this.modalRef.content.closeBtnName = 'Close'
+  editDetails(i: number){
+
+    //navigating to AddNewComponent for updating details
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        'patientId': this.patients[i].patientId
+      }
+    };
+
+    this.router.navigate(['add-new'], navigationExtras)
   }
 
-  openEditModal(i: number){
-    const initialState = {
-      patient: this.patients[i]
-    }
-    this.modalRef = this.modalService.show(EditModalComponent, {
-      initialState,
-      backdrop: true,
-      ignoreBackdropClick: true,
-      class: 'modal-xl',
-    })
-    this.modalRef.content.closeBtnName = 'Close'
-    // this.modalRef.content.messageEvent.subscribe((data) => {
-    //   console.log(data);
-    //   this.viewDriverRewards[i] = data.driverReward;
-    // });
-  }
-
+  // alert for delete patient
   delete(i: number){
 
     this.patientToDelete = this.patients[i]
@@ -82,9 +62,10 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  //api-call for delete patient
   deletePatient(){
     
-    this.hospitalService.deletePatientDetails(this.deletePatientId).subscribe(
+    this.hospitalService.deletePatientDetails(this.patientToDelete.patientId).subscribe(
       (success) =>{
         this.response = success
         if(this.response.status){
@@ -94,6 +75,8 @@ export class HomeComponent implements OnInit {
             text: this.response.message,
             timer: 1500
           })
+
+          this.allPatients()
         }
         else{
           Swal.fire({
@@ -116,6 +99,7 @@ export class HomeComponent implements OnInit {
     )
   }
 
+  // api-call for getting all patients
   allPatients(){
     this.loading = true
 

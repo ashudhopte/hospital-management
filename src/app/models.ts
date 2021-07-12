@@ -9,17 +9,19 @@ export class MPatientDtoC{
     contactNumber: number
     isCovidPositive: boolean
     lastModified: string | Date
+    admittedOn: string | Date
 
     constructor(obj?: MPatientDtoC){
-        this.patientId = obj && obj.patientId || 0
+        this.patientId = obj && obj.patientId || null
         this.firstName = obj && obj.firstName || ''
         this.lastName = obj && obj.lastName || ''
-        this.age = obj && obj.age || 0
+        this.age = obj && obj.age || null
         this.identityType = obj && obj.identityType || ''
         this.identityNumber = obj && obj.identityNumber || ''
-        this.contactNumber = obj && obj.contactNumber || 0
+        this.contactNumber = obj && obj.contactNumber || null
         this.isCovidPositive = obj && obj.isCovidPositive || false
         this.lastModified = obj && obj.lastModified || ''
+        this.admittedOn = obj && obj.admittedOn || ''
     }
 }
 

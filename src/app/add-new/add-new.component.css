@@ -11,7 +11,7 @@
 
 select{
     background-color: transparent;
-    border-radius: 10px;
+    border-radius: 5px;
     width: 100%;
     padding: 5px;
     font-size: medium;
@@ -52,4 +52,8 @@ label{
     margin-top: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
+}
+
+.required{
+    color: red;
 }
