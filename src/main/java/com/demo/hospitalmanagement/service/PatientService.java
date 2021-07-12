@@ -19,6 +19,20 @@ public class PatientService {
     @Autowired
     MPatientRepo mPatientRepo;
 
+    //Getting patient by id
+    public MPatientDto getPatientById(Integer patientId){
+
+        MPatientEntity mPatientEntity = mPatientRepo.findByPatientId(patientId);
+
+        MPatientDto mPatientDto = new MPatientDto();
+
+        if(mPatientEntity != null){
+            BeanUtils.copyProperties(mPatientEntity, mPatientDto);
+        }   
+
+        return mPatientDto;
+    }
+
     // Getting all the patient details
     public List<MPatientDto> getAllPatients(){
 
@@ -69,6 +83,7 @@ public class PatientService {
         // copying properties from dto to entity
         BeanUtils.copyProperties(mPatientDto, mPatientEntity);
         mPatientEntity.setLastModified(new Date());
+        mPatientEntity.setAdmittedOn(new Date());
 
         // saving details to database
         mPatientRepo.save(mPatientEntity);

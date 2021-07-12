@@ -27,6 +27,15 @@ public class HospitalRestController {
     @Autowired
     PatientService patientService;
 
+    // endpoint for getting patient by id
+    @GetMapping("patient-by-id")
+    public ResponseEntity<MPatientDto> patientById(@RequestParam Integer patientId){
+
+        MPatientDto mPatientDto = patientService.getPatientById(patientId);
+
+        return new ResponseEntity<MPatientDto>(mPatientDto, HttpStatus.OK);
+    }
+
     // endpoint for getting all patients
     @GetMapping("all-patients")
     public ResponseEntity<List<MPatientDto>> allpatients(){

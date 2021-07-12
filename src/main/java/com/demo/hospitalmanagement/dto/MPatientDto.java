@@ -11,33 +11,15 @@ import org.springframework.lang.NonNull;
 public class MPatientDto {
     
     Integer patientId;
-
-    @NonNull
-    @NotBlank(message = "First Name should not be blank.")
     String firstName;
-
-    @NonNull
-    @NotBlank(message = "Last Name should not be blank.")
     String lastName;
-
-    @Positive(message = "Age should be positive.")
     BigInteger age;
-
-    @NonNull
     String identityType;
-
-    @NonNull
-    @NotBlank(message = "Identity Number should not be blank.")
     String identityNumber;
-
-    @Positive
     BigInteger contactNumber;
-
-    @NonNull
     Boolean isCovidPositive;
-
     Date lastModified;
-
+    Date admittedOn;
     
 
     public Integer getPatientId() {
@@ -110,6 +92,14 @@ public class MPatientDto {
 
     public void setContactNumber(BigInteger contactNumber) {
         this.contactNumber = contactNumber;
+    }
+
+    public Date getAdmittedOn() {
+        return admittedOn;
+    }
+
+    public void setAdmittedOn(Date admittedOn) {
+        this.admittedOn = admittedOn;
     }
 
     

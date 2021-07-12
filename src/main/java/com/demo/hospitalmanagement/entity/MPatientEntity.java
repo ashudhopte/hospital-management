@@ -61,6 +61,10 @@ public class MPatientEntity {
     @Column(name = "last_modified")
     Date lastModified;
 
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name="admitted_on")
+    Date admittedOn;
+
     
 
     public Integer getPatientId() {
@@ -133,6 +137,14 @@ public class MPatientEntity {
 
     public void setContactNumber(BigInteger contactNumber) {
         this.contactNumber = contactNumber;
+    }
+
+    public Date getAdmittedOn() {
+        return admittedOn;
+    }
+
+    public void setAdmittedOn(Date admittedOn) {
+        this.admittedOn = admittedOn;
     }
 
     
