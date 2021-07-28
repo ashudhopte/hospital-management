@@ -49,11 +49,11 @@
             <div class="row">
                 <label>Is Covid Positive? <i class="required">*</i></label> <br/>
                 <label>
-                    <input type="radio" name="choice-radio" [value]="true" [(ngModel)]="newPatient.isCovidPositive">
+                    <input type="radio" name="choice-radio" (change)="onChange()" [value]="true" [(ngModel)]="newPatient.isCovidPositive">
                     Yes
                 </label>
                 <label>
-                    <input type="radio" name="choice-radio" [value]="false" [(ngModel)]="newPatient.isCovidPositive">
+                    <input type="radio" name="choice-radio" (change)="onChange()" [value]="false" [(ngModel)]="newPatient.isCovidPositive">
                     No
                 </label>
                 
